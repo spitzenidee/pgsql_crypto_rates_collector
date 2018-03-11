@@ -1,0 +1,28 @@
+Windows:
+copy /b schema/crypto_rates_collector.sql + tables/t_config.sql + tables/t_log.sql + tables/t_bitcoinde_rates.sql + trigger/t_rates_bitcoinde_trig_exctract_json.sql + procedures_functions/bitcoinde_api___rates.sql + procedures_functions/bitcoinde_usr___query_and_store_rates.sql + pg_cron_jobs/query_bitcoinde_rates_each_15min.sql >deploy_all.sql
+
+Linux:
+less \
+  schema/crypto_rates_collector.sql \
+  tables/t_config.sql \
+  tables/t_log.sql \
+  tables/t_binance_rates.sql \
+  tables/t_bitcoinde_rates.sql \
+  tables/t_bitstamp_rates.sql \
+  tables/t_cryptopia_rates.sql \
+  procedures_functions/insert_log_msg.sql \
+  procedures_functions/binance_api___ticker_price.sql \
+  procedures_functions/binance_usr___query_and_store_prices.sql \
+  procedures_functions/bitcoinde_api___rates.sql \
+  procedures_functions/bitcoinde_usr___query_and_store_rates.sql \
+  procedures_functions/bitstamp_api___ticker_hour.sql \
+  procedures_functions/bitstamp_usr___query_and_store_prices.sql \
+  procedures_functions/cryptopia_api___getmarket.sql \
+  procedures_functions/cryptopia_usr___query_and_store_market.sql \
+  views/v_combined_rates.sql \
+  views/v_samples_per_exchange_and_time.sql \
+  pg_cron_jobs/query_binance_each_15min.sql \
+  pg_cron_jobs/query_bitcoinde_each_15min.sql \
+  pg_cron_jobs/query_cryptopia_each_15min.sql \
+  pg_cron_jobs/query_bitstamp_each_15min.sql \
+  >deploy_all.sql

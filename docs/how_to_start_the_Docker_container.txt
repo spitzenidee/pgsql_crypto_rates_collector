@@ -1,0 +1,8 @@
+docker run -d \
+  --name postgresql \
+  --restart unless-stopped \
+  -p 5432:5432 \
+  -v </srv/dockerfiles/postgresql_5432>:/var/lib/postgresql/data \
+  -v /etc/localtime:/etc/localtime:ro \
+  -v /etc/timezone:/etc/timezone:ro \
+  spitzenidee/postgresql_timescaledb:latest
