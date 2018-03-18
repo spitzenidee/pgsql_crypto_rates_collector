@@ -57,9 +57,9 @@ BEGIN
         v_http_response
       );
     ELSIF ( (v_http_response IS NULL) AND (v_api_access_active IS TRUE) ) THEN
-      PERFORM crypto_rates_collector.insert_log_msg('ERROR', '[bitstamp_usr___query_and_store_prices(), "' || v_tradepair || '"] - HTTP response from "bitcoinde_api___rates()" was still NULL after ' || v_retries || ' retries. Quitting for now.');
+      PERFORM crypto_rates_collector.insert_log_msg('ERROR', '[bitstamp_usr___query_and_store_prices(), "' || v_tradepair || '"] - HTTP response from "bitstamp_api___ticker_hour()" was still NULL after ' || v_retries || ' retries. Quitting for now.');
     ELSE
-      PERFORM crypto_rates_collector.insert_log_msg('WARN', '[bitstamp_usr___query_and_store_prices(), "' || v_tradepair || '"] - HTTP response from "bitcoinde_api___rates()" is NULL (ok, since API access is deactivated).');
+      PERFORM crypto_rates_collector.insert_log_msg('WARN', '[bitstamp_usr___query_and_store_prices(), "' || v_tradepair || '"] - HTTP response from "bitstamp_api___ticker_hour()" is NULL (ok, since API access is deactivated).');
     END IF;
 
   END LOOP;

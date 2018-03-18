@@ -57,9 +57,9 @@ BEGIN
         v_http_response
       );
     ELSIF ( (v_http_response IS NULL) AND (v_api_access_active IS TRUE) ) THEN
-      PERFORM crypto_rates_collector.insert_log_msg('ERROR', '[cryptopia_usr___query_and_store_market(), "' || v_tradepair || '"] - HTTP response from "bitcoinde_api___rates()" was still NULL after ' || v_retries || ' retries. Quitting for now.');
+      PERFORM crypto_rates_collector.insert_log_msg('ERROR', '[cryptopia_usr___query_and_store_market(), "' || v_tradepair || '"] - HTTP response from "cryptopia_api___getmarket()" was still NULL after ' || v_retries || ' retries. Quitting for now.');
     ELSE
-      PERFORM crypto_rates_collector.insert_log_msg('WARN', '[cryptopia_usr___query_and_store_market(), "' || v_tradepair || '"] - HTTP response from "bitcoinde_api___rates()" is NULL (ok, since API access is deactivated).');
+      PERFORM crypto_rates_collector.insert_log_msg('WARN', '[cryptopia_usr___query_and_store_market(), "' || v_tradepair || '"] - HTTP response from "cryptopia_api___getmarket()" is NULL (ok, since API access is deactivated).');
     END IF;
 
   END LOOP;
